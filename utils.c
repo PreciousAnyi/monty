@@ -82,17 +82,9 @@ void execute_monty_file(const char *file_path)
 }
 /**
  * execute_line - executes the opcode in the line
- void pint(stack_t **stack, unsigned int line_number)
- {
-         if (*stack == NULL)
-         {
-                 fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-                 exit(EXIT_FAILURE);
-         }
-         printf("%d\n", (*stack)->n);
-	 }* @line: string to tokenize
  * @stack: pointer to the top of the stack
  * @line_number: current line number in the monty file
+ * @line: pointer to line where string is stored
  */
 void execute_line(char *line, stack_t **stack, unsigned int line_number)
 {
