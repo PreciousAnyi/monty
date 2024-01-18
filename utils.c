@@ -59,7 +59,6 @@ void execute_monty_file(const char *file_path)
 	size_t len;
 	stack_t *stack;
 	unsigned int line_number;
-	ssize_t read;
 
 	len = 0;
 	line_number = 0;
@@ -71,13 +70,13 @@ void execute_monty_file(const char *file_path)
 		fprintf(stderr, "Error: Can't open file %s\n", file_path);
 		exit(EXIT_FAILURE);
 	}
-	while ((read = getline(&line, &len, file)) != -1)
+	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
 		execute_line(line, &stack, line_number);
 	}
-	free_stack(&stack);
 	free(line);
+	free_stack(&stack);
 	fclose(file);
 }
 /**
@@ -132,4 +131,5 @@ void free_stack(stack_t **stack)
 		current = next;
 	}
 	*stack = NULL;
+	free(*stack);
 }
