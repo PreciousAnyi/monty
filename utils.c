@@ -10,6 +10,7 @@ int is_integer(const char *str)
 {
 	int i;
 
+	i = 0;
 	if (str[0] == '-')
 		i = 1;
 	for (; str[i] != '\0'; i++)
@@ -46,6 +47,7 @@ void push_to_stack(stack_t **stack, int value)
 		new_node->next = *stack;
 		*stack = new_node;
 	}
+	free(new_node);
 }
 /**
  * execute_monty_file - reads the monty file
