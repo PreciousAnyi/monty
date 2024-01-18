@@ -43,8 +43,8 @@ void push_to_stack(stack_t **stack, int value)
 		*stack = new_node;
 	else
 	{
-		(*stack)->prev = new_node;
 		new_node->next = *stack;
+		(*stack)->prev = new_node;
 		*stack = new_node;
 	}
 }
