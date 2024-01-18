@@ -77,6 +77,7 @@ void execute_monty_file(const char *file_path)
 		line_number++;
 		execute_line(line, &stack, line_number);
 	}
+	free_stack(&stack);
 	free(line);
 	fclose(file);
 }
@@ -90,7 +91,7 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *opcode;
 	int i;
-	instruction_t instructions[3];
+	instruction_t instructions[10];
 
 	opcode = strtok(line, " \t\n");
 	if (opcode == NULL)
@@ -111,4 +112,17 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
+}
+void free_stack(stack_t **stack)
+{
+	stack_t *current = *stack;
+	stack_t *next;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*stack = NULL;
 }
