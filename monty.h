@@ -37,6 +37,7 @@ typedef struct instruction_s
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void push_to_stack(stack_t **stack, int value);
 int is_integer(const char *str);
 void execute_line(char *line, stack_t **stack, unsigned int line_number);

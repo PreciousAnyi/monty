@@ -101,8 +101,10 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 	instructions[1].f = pall;
 	instructions[2].opcode = "pint";
 	instructions[2].f = pint;
-	instructions[3].opcode = NULL;
-	instructions[3].f = NULL;
+	instructions[3].opcode = "pop";
+	instructions[3].f = pop;
+	instructions[4].opcode = NULL;
+	instructions[4].f = NULL;
 	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
