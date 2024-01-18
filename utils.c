@@ -104,8 +104,10 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 	instructions[3].f = pop;
 	instructions[4].opcode = "swap";
 	instructions[4].f = swap;
-	instructions[5].opcode = NULL;
-	instructions[5].f = NULL;
+	instructions[5].opcode = "add";
+	instructions[5].f = add;
+	instructions[6].opcode = NULL;
+	instructions[6].f = NULL;
 	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
@@ -133,5 +135,4 @@ void free_stack(stack_t **stack)
 		current = next;
 	}
 	*stack = NULL;
-	free(*stack);
 }

@@ -40,6 +40,8 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void push_to_stack(stack_t **stack, int value);
 void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 int is_integer(const char *str);
 void execute_line(char *line, stack_t **stack, unsigned int line_number);
 void execute_monty_file(const char *file_path);
