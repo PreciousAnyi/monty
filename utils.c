@@ -47,7 +47,6 @@ void push_to_stack(stack_t **stack, int value)
 		new_node->next = *stack;
 		*stack = new_node;
 	}
-	free(new_node);
 }
 /**
  * execute_monty_file - reads the monty file
@@ -83,7 +82,15 @@ void execute_monty_file(const char *file_path)
 }
 /**
  * execute_line - executes the opcode in the line
- * @line: string to tokenize
+ void pint(stack_t **stack, unsigned int line_number)
+ {
+         if (*stack == NULL)
+         {
+                 fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+                 exit(EXIT_FAILURE);
+         }
+         printf("%d\n", (*stack)->n);
+	 }* @line: string to tokenize
  * @stack: pointer to the top of the stack
  * @line_number: current line number in the monty file
  */
@@ -100,8 +107,10 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 	instructions[0].f = push;
 	instructions[1].opcode = "pall";
 	instructions[1].f = pall;
-	instructions[2].opcode = NULL;
-	instructions[2].f = NULL;
+	instructions[2].opcode = "pint";
+	instructions[2].f = pint;
+	instructions[3].opcode = NULL;
+	instructions[3].f = NULL;
 	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
