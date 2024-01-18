@@ -1,7 +1,7 @@
 #include "monty.h"
 #define _POSIX_C_SOURCE 200809L
 /**
- * is_number - checks if a str is in number equivalent
+ * is_integer - checks if a str is in number equivalent
  * @str: string
  *
  * Return: 0 if false or 1 if true
@@ -113,6 +113,10 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 }
+/**
+ * free_stack - frees all allocated memory
+ * @stack: pointer to the top of the stack
+ */
 void free_stack(stack_t **stack)
 {
 	stack_t *current = *stack;
