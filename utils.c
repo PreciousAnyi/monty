@@ -89,10 +89,10 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *opcode;
 	int i;
-	instruction_t instructions[10];
+	instruction_t instructions[15];
 
 	opcode = strtok(line, " \t\n");
-	if (opcode == NULL)
+	if (opcode == NULL || opcode[0] == '#')
 		return;
 	instructions[0].opcode = "push";
 	instructions[0].f = push;
@@ -108,8 +108,16 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 	instructions[5].f = add;
 	instructions[6].opcode = "nop";
 	instructions[6].f = nop;
-	instructions[7].opcode = NULL;
-	instructions[7].f = NULL;
+	instructions[7].opcode = "sub";
+	instructions[7].f = sub;
+	instructions[8].opcode = "div";
+	instructions[8].f = divide;
+	instructions[9].opcode = "mul";
+	instructions[9].f = multiply;
+	instructions[10].opcode = "mod";
+	instructions[10].f = modulo;
+	instructions[11].opcode = NULL;
+	instructions[11].f = NULL;
 	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
