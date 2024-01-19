@@ -116,8 +116,6 @@ void execute_line(char *line, stack_t **stack, unsigned int line_number)
 	instructions[9].f = multiply;
 	instructions[10].opcode = "mod";
 	instructions[10].f = modulo;
-	instructions[11].opcode = NULL;
-	instructions[11].f = NULL;
 	for (i = 0; instructions[i].opcode; i++)
 	{
 		if (strcmp(opcode, instructions[i].opcode) == 0)
